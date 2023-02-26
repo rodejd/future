@@ -219,3 +219,26 @@ fun main(args: Array<String>) {
 
 }
 
+
+
+
+data class Node(val value: Int, val children: List<Node>)
+
+fun printTree(root: Node, level: Int = 0) {
+    println("   ".repeat(level) + "- ${root.value}")
+    root.children.forEach { printTree(it, level + 1) }
+}
+
+
+fun main() {
+    val root = Node(1, listOf(
+        Node(2, listOf(
+            Node(4, emptyList()),
+            Node(5, emptyList())
+        )),
+        Node(3, listOf(
+            Node(6, emptyList())
+        ))
+    ))
+    printTree(root)
+}
